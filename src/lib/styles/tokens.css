@@ -1,0 +1,142 @@
+/* WILDGLASS design tokens: semantic names, shared across themes.
+   Components and the canvas scenes read these; never hardcode hex elsewhere.
+   Light is the default on every load. Dark applies only via [data-theme="dark"],
+   which the toggle sets (and remembers). */
+
+:root {
+	color-scheme: light;
+
+	/* --- Colour: LIGHT, "daylight studio" --- */
+	--bg: #f7f4ee;
+	--bg-alt: #ede6d7;
+	--surface: #fcfaf5;
+	--surface-2: #f2ece0;
+	--text: #16271d;
+	--text-muted: #5c6c61;
+	--text-faint: #8a988b;
+	--brand: #153c2a;
+	--brand-deep: #0f2c1f;
+	--on-brand: #f4f1e7; /* text on brand-green surfaces */
+	--accent: #b66c3d;
+	--accent-strong: #9a5530; /* solid button fill (safe contrast w/ --on-brand) */
+	--glass: #9fc4b6;
+	--glass-soft: #cbded6;
+	--line: #e4dbca;
+	--line-strong: #d8cdb8;
+	--shadow: 0 1px 2px rgba(21, 60, 42, 0.04), 0 10px 30px rgba(21, 60, 42, 0.08);
+	--shadow-lift: 0 2px 6px rgba(21, 60, 42, 0.06), 0 22px 50px rgba(21, 60, 42, 0.14);
+
+	/* --- Terrarium scene (read by #lib/terrarium), daylight --- */
+	--t-haze-1: #e9f1e8; /* air inside the glass, top */
+	--t-haze-2: #c8dccd; /* air inside the glass, bottom */
+	--t-leaf-1: #123324;
+	--t-leaf-2: #1f5237;
+	--t-leaf-3: #2f7048;
+	--t-leaf-4: #57935f;
+	--t-leaf-5: #9ac68a; /* young growth */
+	--t-moss-1: #2f5b33;
+	--t-moss-2: #527f3b;
+	--t-moss-3: #93b352;
+	--t-stone-1: #efe9dd; /* lit facet */
+	--t-stone-2: #cdc5b5;
+	--t-stone-3: #a59c8b;
+	--t-stone-4: #787164;
+	--t-stone-5: #4b473f;
+	--t-soil-1: #5c4734;
+	--t-soil-2: #413226;
+	--t-soil-3: #2b221b;
+	--t-sand: #d4bf99;
+	--t-wood-1: #d9ab78;
+	--t-wood-2: #bb8754;
+	--t-wood-3: #8a5c36;
+	--t-stipe: #6b4a2e; /* fern stems */
+	--t-cap: #b66c3d; /* mushroom caps: the brand copper */
+	--t-glass-edge: #86b3a3;
+	--t-glass-tint: #9fc4b6;
+	--t-glass-hi: #ffffff;
+	--t-light: #fff4d6; /* daylight shaft */
+	--t-glow: #ffb56b; /* lamp */
+	--t-firefly: #ffe08a;
+	--t-mote: #c98a52; /* drifting pollen */
+	--t-shadow: #153c2a;
+	--t-ink: #123324;
+
+	/* --- Type --- */
+	--font-display: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
+	--font-body: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+	/* --- Space / shape --- */
+	--maxw: 1180px;
+	--gutter: clamp(1.25rem, 5vw, 3.5rem);
+	--radius-sm: 10px;
+	--radius: 16px;
+	--radius-lg: 26px;
+	--radius-pill: 999px;
+
+	/* --- Motion --- */
+	--ease: cubic-bezier(0.22, 1, 0.36, 1); /* soft ease-out */
+	--ease-inout: cubic-bezier(0.65, 0.05, 0.36, 1);
+	--dur-fast: 0.25s;
+	--dur: 0.6s;
+	--dur-slow: 1.1s;
+}
+
+/* --- Colour: DARK, "terrarium at night" (brand-tinted, never pure black).
+   Only ever applied by an explicit toggle; light is always the default. --- */
+:root[data-theme='dark'] {
+	color-scheme: dark;
+
+	--bg: #0c1e15;
+	--bg-alt: #09170f;
+	--surface: #122a1f;
+	--surface-2: #193a2b;
+	--text: #f1ede3;
+	--text-muted: #9fb3a4;
+	--text-faint: #6e8274;
+	--brand: #8fc2a6;
+	--brand-deep: #071711;
+	--on-brand: #f1ede3;
+	--accent: #db8e58;
+	--accent-strong: #c8793f;
+	--glass: #b9d8cb;
+	--glass-soft: #6fa38e;
+	--line: rgba(241, 237, 227, 0.12);
+	--line-strong: rgba(241, 237, 227, 0.2);
+	--shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 34px rgba(0, 0, 0, 0.4);
+	--shadow-lift: 0 2px 8px rgba(0, 0, 0, 0.35), 0 26px 60px rgba(0, 0, 0, 0.5);
+
+	/* --- Terrarium scene, lamp-lit night --- */
+	--t-haze-1: #1a3023;
+	--t-haze-2: #08140d;
+	--t-leaf-1: #07150e;
+	--t-leaf-2: #0f2a1c;
+	--t-leaf-3: #1b4a30;
+	--t-leaf-4: #317449;
+	--t-leaf-5: #86c48f;
+	--t-moss-1: #12301a;
+	--t-moss-2: #2a5a2b;
+	--t-moss-3: #769f48;
+	--t-stone-1: #c2bbaa;
+	--t-stone-2: #8e8878;
+	--t-stone-3: #615d52;
+	--t-stone-4: #3b3933;
+	--t-stone-5: #1c1b18;
+	--t-soil-1: #35291d;
+	--t-soil-2: #201912;
+	--t-soil-3: #120e0a;
+	--t-sand: #927f5e;
+	--t-wood-1: #a87a4b;
+	--t-wood-2: #77512f;
+	--t-wood-3: #46301c;
+	--t-stipe: #4a3220;
+	--t-cap: #db8e58;
+	--t-glass-edge: #b9d8cb;
+	--t-glass-tint: #7fb5a0;
+	--t-glass-hi: #fff1d0;
+	--t-light: #ffe2b0;
+	--t-glow: #ffb062;
+	--t-firefly: #ffe59a;
+	--t-mote: #ffcf8f;
+	--t-shadow: #000000;
+	--t-ink: #050d09;
+}
