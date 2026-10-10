@@ -3,5 +3,12 @@
 	"name": "chamuthussite",
 	"compatibility_date": "2026-10-10",
 	"compatibility_flags": ["nodejs_als"],
-	"pages_build_output_dir": ".svelte-kit/cloudflare"
+	"pages_build_output_dir": ".svelte-kit/cloudflare",
+	// Cloudflare Pages reads build variables from here. Its default bun (1.2.15)
+	// cannot read the lockfile format written by the bun used in development, so
+	// keep this equal to the bun that last wrote bun.lock. Node is pinned in
+	// .node-version. After editing this file, run `bun run gen`.
+	"vars": {
+		"BUN_VERSION": "1.4.2"
+	}
 }

@@ -21,7 +21,8 @@ bun run preview
 ```
 
 Cloudflare Pages settings: build command `bun run build`, output directory
-`.svelte-kit/cloudflare`.
+`.svelte-kit/cloudflare`. The bun and Node versions the Pages build uses are pinned in
+`wrangler.jsonc` (`BUN_VERSION`) and `.node-version`.
 
 ## Where things are
 

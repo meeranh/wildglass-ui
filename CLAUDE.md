@@ -34,6 +34,17 @@ model cards and detail pages still show a placeholder mark.
 Cloudflare Pages settings: build command `bun run build`, output directory
 `.svelte-kit/cloudflare`. Commit `bun.lock` so Pages uses bun.
 
+The Pages build's tool versions are pinned in the repo, because the build image's defaults
+are older than what this project is developed with:
+
+- **bun**: `vars.BUN_VERSION` in `wrangler.jsonc`. Pages runs `bun install --frozen-lockfile`,
+  and its default bun (1.2.15) cannot read the newer `bun.lock` format. Keep this equal to
+  the bun that last wrote `bun.lock` (`bun -v`). If a deploy fails with "Unknown lockfile
+  version", this is why.
+- **Node**: `.node-version`. SvelteKit 3 needs Node 22.17 or newer; the image default is 22.16.
+- After any edit to `wrangler.jsonc`, run `bun run gen` and commit `worker-configuration.d.ts`.
+  The build starts with `wrangler types --check` and fails if that file is stale.
+
 ## SvelteKit 3 gotchas (these differ from older SvelteKit)
 
 - Import app code with **`#lib/...`**, not `$lib`. The alias comes from `imports` in
